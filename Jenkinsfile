@@ -16,17 +16,19 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
-            steps {
-                container('npm') {
-                    sh 'npm run build'
-                }
-            }
-        }
         stage('Tests') {
             steps {
                 container('npm') {
                     sh 'npm run test'
+                }
+            }
+        }
+        stage('Build ') {
+            // building the production artifacts, not publishing them in the demo
+            when { anyOf { branch 'master'; branch 'develop' } }
+            steps {
+                container('npm') {
+                    sh 'npm run build'
                 }
             }
         }
