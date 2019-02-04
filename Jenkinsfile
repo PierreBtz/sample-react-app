@@ -8,6 +8,10 @@ pipeline {
             yamlFile 'build-pod.yaml'
         }
     }
+    environment {
+        // this is for create-react-app test 
+        CI="true"
+    }
     stages {
         stage('Prepare') {
             steps {
