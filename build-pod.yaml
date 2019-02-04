@@ -1,0 +1,11 @@
+metadata:
+  labels:
+    some-label: sample-react-app
+    class: KubernetesDeclarativeAgent
+spec:
+  containers:
+    - name: npm
+      image: node:8.15.0-jessie
+      command:
+        - cat
+      tty: true
